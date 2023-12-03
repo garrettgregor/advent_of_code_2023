@@ -83,7 +83,18 @@ class Conundrum
 
     power = (green_min * blue_min * red_min)
   end
+
+  def sum_powers(games)
+    games.each do |game|
+      @power_sum += power_per_game(game)
+    end
+
+    @power_sum
+  end
 end
 
-# puzzle = Conundrum.new('./fixtures/input.txt')
-# p puzzle.sum_possible_games(puzzle.contents)
+puzzle = Conundrum.new('./fixtures/input.txt')
+p "--- Sum of Possible Games ---\n"
+p puzzle.sum_possible_games(puzzle.contents)
+p "--- Sum of Powers ---\n"
+p puzzle.sum_powers(puzzle.contents)
