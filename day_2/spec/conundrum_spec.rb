@@ -60,11 +60,11 @@ RSpec.describe Conundrum do
       d = "Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red"
       e = "Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"
 
-      expect(conundrum.min_per_game(a)).to eq(48)
-      expect(conundrum.min_per_game(b)).to eq(12)
-      expect(conundrum.min_per_game(c)).to eq(1560)
-      expect(conundrum.min_per_game(d)).to eq(630)
-      expect(conundrum.min_per_game(e)).to eq(36)
+      expect(conundrum.power_per_game(a)).to eq(48)
+      expect(conundrum.power_per_game(b)).to eq(12)
+      expect(conundrum.power_per_game(c)).to eq(1560)
+      expect(conundrum.power_per_game(d)).to eq(630)
+      expect(conundrum.power_per_game(e)).to eq(36)
     end
   end
 end
