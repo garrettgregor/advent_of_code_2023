@@ -1,5 +1,8 @@
 class Conundrum
-  attr_reader :game_counter, :contents, :possible_game_collector
+  attr_reader :game_counter,
+              :contents,
+              :possible_game_collector,
+              :power_sum
 
   def initialize(file)
     @contents = File.open(file).map do |line|
@@ -11,6 +14,7 @@ class Conundrum
       "green" => 13,
       "blue" => 14
     }
+    @power_sum = 0
   end
 
   def possible?(string)
@@ -68,6 +72,16 @@ class Conundrum
     end
 
     game_mins
+  end
+
+  def power_per_game(game)
+    min_hash = min_per_game(game)
+
+    green_min = min_hash["green"]
+    blue_min = min_hash["blue"]
+    red_min = min_hash["red"]
+
+    power = (green_min * blue_min * red_min)
   end
 end
 
