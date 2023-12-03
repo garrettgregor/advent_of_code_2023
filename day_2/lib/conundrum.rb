@@ -14,8 +14,6 @@ class Conundrum
   end
 
   def possible?(string)
-    cleaned_game = Hash.new
-
     string.delete_prefix!("Game ")
 
     game_number = string.split(/[[:punct:]]/).shift.to_i
@@ -49,7 +47,29 @@ class Conundrum
     end
     @possible_game_collector.sum
   end
+
+  def min_per_game(game)
+    game_mins = { "blue" => 0, "red" => 0, "green" => 0}
+
+    pattern = /: |; |, /
+    game_data = game.split(pattern)
+    game_data.shift
+
+    each_draw = []
+
+    game_data.map do |draw|
+      each_draw << [draw.split(" ").first.to_i, draw.split(" ")[1].to_s]
+    end
+
+    each_draw.each do |num_drawn, color|
+      if game_mins[color] <= num_drawn
+        game_mins[color] = num_drawn
+      end
+    end
+
+    game_mins
+  end
 end
 
-puzzle = Conundrum.new('./fixtures/input.txt')
-p puzzle.sum_possible_games(puzzle.contents)
+# puzzle = Conundrum.new('./fixtures/input.txt')
+# p puzzle.sum_possible_games(puzzle.contents)
