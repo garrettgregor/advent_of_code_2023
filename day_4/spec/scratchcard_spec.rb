@@ -10,6 +10,7 @@ RSpec.describe Scratchcard do
         expect(scratchcard).to be_an_instance_of(Scratchcard)
         expect(scratchcard.data).to be_an(Array)
         expect(scratchcard.points).to eq(0)
+        expect(scratchcard.total_cards).to be_a(Hash)
       end
     end
 
@@ -34,8 +35,10 @@ RSpec.describe Scratchcard do
 
     context "#scratch" do
       it "accumulates points for each line" do
+        require 'pry'; binding.pry
         expect(scratchcard.scratch(scratchcard.data)).to eq([8, 2, 2, 1, 0, 0])
       end
     end
+
   end
 end
