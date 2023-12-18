@@ -33,7 +33,7 @@ class Lens
     total = 0
 
     self.data.each do |string|
-      total += calculation(ascii_values(string))
+      total += hash_letters(string)
     end
 
     total
